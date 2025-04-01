@@ -1,0 +1,291 @@
+[gd_scene load_steps=29 format=3 uid="uid://5thi6wa37qfe"]
+
+[ext_resource type="Texture2D" uid="uid://cmvst1mpddckq" path="res://Assets/Skies/farm_field_puresky_4k.exr" id="1_50ddd"]
+[ext_resource type="Texture2D" uid="uid://ds6ppbygxy5t" path="res://Assets/Textures/Painted Concrete/painted_concrete_02_diff_4k.jpg" id="2_3kbgn"]
+[ext_resource type="PackedScene" uid="uid://dquvri61bwmjg" path="res://Scenes and Scripts/Player/Player.tscn" id="2_wxend"]
+[ext_resource type="Texture2D" uid="uid://f33tpk0y51a3" path="res://Assets/Textures/Painted Concrete/painted_concrete_02_nor_gl_4k.jpg" id="3_8hedn"]
+[ext_resource type="Texture2D" uid="uid://balrybqb4e7tj" path="res://Assets/Textures/Painted Concrete/painted_concrete_02_rough_4k.jpg" id="4_sbfgi"]
+[ext_resource type="PackedScene" uid="uid://d0sq78rmvesvu" path="res://Assets/Models/Environment/Rubble/Concrete/1/concrete_rubble_pile_tgdtfg0da_high.glb" id="5_sbfgi"]
+[ext_resource type="PackedScene" uid="uid://04c5885hs8aw" path="res://Assets/Models/Environment/Props/Wood planks/1/broken_wooden_piece_tjroacvhw_high.glb" id="6_50ddd"]
+[ext_resource type="PackedScene" uid="uid://bg8if82cfyk31" path="res://Assets/Models/Environment/Props/Wood planks/2/wooden_beam_uebpbetfa_high.glb" id="7_50ddd"]
+[ext_resource type="Texture2D" uid="uid://bkkjratomp20r" path="res://Assets/Textures/Concrete Layers/concrete_layers_nor_gl_4k.jpg" id="7_pxkql"]
+[ext_resource type="PackedScene" uid="uid://biyvaggaklvyq" path="res://Assets/Models/Environment/Rubble/Concrete/3/cement_rubble_rjgmq_high.glb" id="8_5uywp"]
+[ext_resource type="Texture2D" uid="uid://b37pah6yd6o2n" path="res://Assets/Textures/Concrete Layers/concrete_layers_rough_4k.jpg" id="8_xt006"]
+[ext_resource type="PackedScene" uid="uid://ck6tkui36wq46" path="res://Assets/Models/Environment/Rubble/Concrete/2/concrete_rubble_pile_ujriaadga_high.glb" id="9_ep2v1"]
+[ext_resource type="PackedScene" uid="uid://cmxtickpqsos1" path="res://Assets/Models/Environment/Props/Wood Pallet/wooden_pallet_vh1jeck_high.glb" id="9_xt006"]
+[ext_resource type="Texture2D" uid="uid://bw2xrafcvlpkj" path="res://Assets/Textures/Concrete Layers/concrete_layers_diff_4k.jpg" id="11_urmpg"]
+[ext_resource type="Texture2D" uid="uid://boaijb76sgt03" path="res://Assets/Textures/Graffiti/T_ve3gdiol_4K_B-O.png" id="15_3hv1e"]
+[ext_resource type="Texture2D" uid="uid://paat1ivf1bqq" path="res://Assets/Textures/Graffiti/T_vlrkdiyc_4K_B-O.png" id="16_3mwjs"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5uywp"]
+panorama = ExtResource("1_50ddd")
+energy_multiplier = 0.4
+
+[sub_resource type="Sky" id="Sky_8hedn"]
+sky_material = SubResource("PanoramaSkyMaterial_5uywp")
+
+[sub_resource type="Environment" id="Environment_sbfgi"]
+background_mode = 2
+sky = SubResource("Sky_8hedn")
+ambient_light_sky_contribution = 0.51
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 1.16
+tonemap_white = 5.0
+ssr_enabled = true
+ssr_fade_in = 0.0374999
+ssr_fade_out = 0.0947326
+ssao_enabled = true
+ssao_radius = 3.95
+ssao_intensity = 3.79
+ssao_power = 1.30583
+ssao_detail = 3.68
+ssao_horizon = 0.16
+ssil_radius = 12.15
+ssil_intensity = 0.0
+sdfgi_enabled = true
+sdfgi_cascades = 1
+sdfgi_min_cell_size = 11.13
+sdfgi_energy = 0.585
+glow_enabled = true
+glow_intensity = 4.33
+glow_blend_mode = 0
+glow_hdr_threshold = 1.54
+fog_mode = 1
+fog_light_energy = 11.65
+fog_density = 1.0
+volumetric_fog_density = 0.0209
+volumetric_fog_emission_energy = 110.36
+volumetric_fog_gi_inject = 11.43
+volumetric_fog_anisotropy = -0.19
+volumetric_fog_length = 411.96
+volumetric_fog_detail_spread = 1.56917
+volumetric_fog_ambient_inject = 2.24
+volumetric_fog_sky_affect = 0.388
+adjustment_enabled = true
+adjustment_contrast = 1.25
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pxkql"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 15.0
+dof_blur_far_transition = 10.0
+dof_blur_near_enabled = true
+dof_blur_near_distance = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50ddd"]
+albedo_texture = ExtResource("2_3kbgn")
+roughness_texture = ExtResource("4_sbfgi")
+normal_enabled = true
+normal_texture = ExtResource("3_8hedn")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pwhho"]
+material = SubResource("StandardMaterial3D_50ddd")
+size = Vector2(15, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urmpg"]
+albedo_texture = ExtResource("11_urmpg")
+roughness_texture = ExtResource("8_xt006")
+normal_enabled = true
+normal_texture = ExtResource("7_pxkql")
+uv1_scale = Vector3(2.415, -2.935, 2.415)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rj0e6"]
+material = SubResource("StandardMaterial3D_urmpg")
+size = Vector3(3.2, 0.2, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3hv1e"]
+material = SubResource("StandardMaterial3D_urmpg")
+size = Vector3(2.275, 0.2, 0.35)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxkql"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xt006"]
+material = SubResource("StandardMaterial3D_pxkql")
+size = Vector3(3.2, 1.995, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxend"]
+size = Vector3(20, 1, 20)
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, -0.950517, 0.310677, 0, -0.310677, -0.950516, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.17
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 153.5
+
+[node name="DirectionalLight3D_Extra" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.142629, -0.3075, -0.940798, 0, -0.950517, 0.310676, -0.989775, 0.0443115, 0.135571, 0, 0, 0)
+light_energy = 0.238
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.17
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 153.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sbfgi")
+camera_attributes = SubResource("CameraAttributesPractical_pxkql")
+
+[node name="Player" parent="." instance=ExtResource("2_wxend")]
+transform = Transform3D(0.58252, 0, -0.812816, 0, 1, 0, 0.812816, 0, 0.58252, -4.87163, 0, 5.09592)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Structures" type="Node" parent="Environment"]
+
+[node name="Ground" type="MeshInstance3D" parent="Environment/Structures"]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, -1.0358, -0.0701891, 1.10738)
+mesh = SubResource("PlaneMesh_pwhho")
+skeleton = NodePath("../../..")
+
+[node name="Roof" type="MeshInstance3D" parent="Environment/Structures"]
+transform = Transform3D(-0.80846, 7.06778e-08, 0, -7.06778e-08, -0.80846, 0, 0, 0, 0.80846, -1.0358, 4.51599, 1.10738)
+mesh = SubResource("PlaneMesh_pwhho")
+skeleton = NodePath("../../..")
+
+[node name="Ground2" type="MeshInstance3D" parent="Environment/Structures"]
+transform = Transform3D(0.80846, 0, 0, 0, -3.53389e-08, 0.80846, 0, -0.80846, -3.53389e-08, -1.0358, -0.930649, 6.37732)
+mesh = SubResource("PlaneMesh_pwhho")
+skeleton = NodePath("../../..")
+
+[node name="Ground3" type="MeshInstance3D" parent="Environment/Structures"]
+transform = Transform3D(-3.53389e-08, -0.80846, -3.53389e-08, 0, -3.53389e-08, 0.80846, -0.80846, 3.53389e-08, 1.54472e-15, 4.29825, -0.930649, 1.41601)
+mesh = SubResource("PlaneMesh_pwhho")
+skeleton = NodePath("../../..")
+
+[node name="Ground4" type="MeshInstance3D" parent="Environment/Structures"]
+transform = Transform3D(-0.80846, -7.06778e-08, -3.08942e-15, 0, -3.53389e-08, 0.80846, -7.06778e-08, 0.80846, 3.53389e-08, -0.73203, -0.930649, -3.51086)
+mesh = SubResource("PlaneMesh_pwhho")
+skeleton = NodePath("../../..")
+
+[node name="Ground5" type="MeshInstance3D" parent="Environment/Structures"]
+transform = Transform3D(-3.53389e-08, 0.80846, 3.53389e-08, 0, -3.53389e-08, 0.80846, 0.80846, 3.53389e-08, 1.54471e-15, -6.06607, -0.930649, 1.45044)
+mesh = SubResource("PlaneMesh_pwhho")
+skeleton = NodePath("../../..")
+
+[node name="Window Frames" type="Node" parent="Environment/Structures"]
+
+[node name="Window Frame1" type="MeshInstance3D" parent="Environment/Structures/Window Frames"]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, -2.37724, 1.21172, -3.53298)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rj0e6")
+skeleton = NodePath("../../../..")
+
+[node name="Window Frame2" type="MeshInstance3D" parent="Environment/Structures/Window Frames"]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, 1.27073, 1.21172, -3.53298)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rj0e6")
+skeleton = NodePath("../../../..")
+
+[node name="Window Frame3" type="MeshInstance3D" parent="Environment/Structures/Window Frames"]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, -2.37724, 2.88902, -3.53298)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rj0e6")
+skeleton = NodePath("../../../..")
+
+[node name="Window Frame4" type="MeshInstance3D" parent="Environment/Structures/Window Frames"]
+transform = Transform3D(-3.53389e-08, -0.80846, 0, 0.80846, -3.53389e-08, 0, 0, 0, 0.80846, -3.70042, 2.04923, -3.53298)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_3hv1e")
+skeleton = NodePath("../../../..")
+
+[node name="Window Frame5" type="MeshInstance3D" parent="Environment/Structures/Window Frames"]
+transform = Transform3D(-3.53389e-08, -0.80846, 0, 0.80846, -3.53389e-08, 0, 0, 0, 0.80846, -1.06124, 2.04923, -3.53298)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_3hv1e")
+skeleton = NodePath("../../../..")
+
+[node name="Window Frame6" type="MeshInstance3D" parent="Environment/Structures/Window Frames"]
+transform = Transform3D(-3.53389e-08, -0.80846, 0, 0.80846, -3.53389e-08, 0, 0, 0, 0.80846, -0.0970875, 2.04923, -3.53298)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_3hv1e")
+skeleton = NodePath("../../../..")
+
+[node name="Window Frame7" type="MeshInstance3D" parent="Environment/Structures/Window Frames"]
+transform = Transform3D(-3.53389e-08, -0.80846, 0, 0.80846, -3.53389e-08, 0, 0, 0, 0.80846, 2.54209, 2.04923, -3.53298)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_3hv1e")
+skeleton = NodePath("../../../..")
+
+[node name="Window Frame8" type="MeshInstance3D" parent="Environment/Structures/Window Frames"]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, 1.27073, 2.88902, -3.53298)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_rj0e6")
+skeleton = NodePath("../../../..")
+
+[node name="Sketchfab_Scene" parent="Environment/Structures/Window Frames" instance=ExtResource("9_xt006")]
+transform = Transform3D(0.38644, -1.32367, 0, 1.32367, 0.38644, 0, 0, 0, 1.37892, 4.06935, 0.723614, -0.118265)
+
+[node name="Emmision Lights" type="Node" parent="Environment/Structures"]
+
+[node name="EmmisionLight" type="MeshInstance3D" parent="Environment/Structures/Emmision Lights"]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, -2.42947, 2.07122, -3.90268)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_xt006")
+skeleton = NodePath("../../../..")
+
+[node name="EmmisionLight2" type="MeshInstance3D" parent="Environment/Structures/Emmision Lights"]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, 1.21398, 2.07122, -3.90268)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_xt006")
+skeleton = NodePath("../../../..")
+
+[node name="Wood Planks" type="Node" parent="Environment"]
+
+[node name="Wood Plank" parent="Environment/Wood Planks" instance=ExtResource("6_50ddd")]
+transform = Transform3D(5.2485, 0, 9.12039, 0, 10.5227, 0, -9.12039, 0, 5.2485, -3.1707, -0.0701891, 2.14938)
+
+[node name="Wood Plank2" parent="Environment/Wood Planks" instance=ExtResource("7_50ddd")]
+transform = Transform3D(0.410665, -0.100749, -1.20363, 0.234119, 1.25382, -0.0250711, 1.18493, -0.212815, 0.422098, 3.25415, 0.11, 4.43315)
+
+[node name="Rubble" type="Node" parent="Environment"]
+
+[node name="Rubble" parent="Environment/Rubble" instance=ExtResource("5_sbfgi")]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, -4.40172, -0.227051, 1.45239)
+
+[node name="Rubble2" parent="Environment/Rubble" instance=ExtResource("8_5uywp")]
+transform = Transform3D(7.27417, 0, 0, 0, 7.27417, 0, 0, 0, 7.27417, 3.52524, -0.0701891, 5.97145)
+
+[node name="Rubble3" parent="Environment/Rubble" instance=ExtResource("9_ep2v1")]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, 2.77799, -0.0701891, 3.60795)
+
+[node name="GroundCollision" type="StaticBody3D" parent="."]
+transform = Transform3D(0.80846, 0, 0, 0, 0.80846, 0, 0, 0, 0.80846, -1.0358, -0.0701891, 1.10738)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.496887, 0)
+shape = SubResource("BoxShape3D_wxend")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.470473, 0, 0.882415, 0, 1, 0, -0.882415, 0, -0.470473, 3.02265, 1.63102, -3.74789)
+light_specular = 0.348
+shadow_normal_bias = 0.0
+spot_range = 28.565
+spot_attenuation = 0.24
+spot_angle = 36.43
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.676035, 1.51358, 0.717522)
+light_energy = 0.314
+shadow_normal_bias = 0.0
+spot_range = 8.331
+spot_attenuation = -0.12
+spot_angle = 95.58
+
+[node name="Graffiti1" type="Decal" parent="."]
+transform = Transform3D(-7.07211e-08, -1.61791, 7.07211e-08, 0, -7.07211e-08, -1.61791, 1.61791, -7.07211e-08, 3.09132e-15, 5.37417, 2.75559, -1.4976)
+texture_albedo = ExtResource("15_3hv1e")
+texture_orm = ExtResource("15_3hv1e")
+
+[node name="Graffiti2" type="Decal" parent="."]
+transform = Transform3D(-1.89229, -1.68153e-07, -0.0375986, 0.062311, -7.72674e-08, -1.14181, 1.65519e-07, -1.89332, 4.99373e-08, -0.259118, 1.73502, 7.19701)
+texture_albedo = ExtResource("16_3mwjs")
+texture_orm = ExtResource("16_3mwjs")

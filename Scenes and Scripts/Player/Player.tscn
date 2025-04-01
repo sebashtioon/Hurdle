@@ -1,0 +1,114 @@
+[gd_scene load_steps=22 format=3 uid="uid://dquvri61bwmjg"]
+
+[ext_resource type="Shader" uid="uid://d0aukr8x5i4i0" path="res://Resources/Shaders/bodycam.gdshader" id="1_8hp3f"]
+[ext_resource type="Script" uid="uid://dvqpimvvei342" path="res://Scenes and Scripts/Player/Player.gd" id="1_giai7"]
+[ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="2_ksmpk"]
+[ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="3_mms66"]
+[ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="4_wr2qm"]
+[ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="5_0muwv"]
+[ext_resource type="Script" uid="uid://lijd0533ls0w" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="6_b8n8j"]
+[ext_resource type="Resource" uid="uid://dre56ajymywpr" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_blur_stage.tres" id="7_ksmpk"]
+[ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_neighbor_max_stage.tres" id="8_k5fnn"]
+[ext_resource type="Resource" uid="uid://bidsfymvdyhek" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_overlay_stage.tres" id="9_431pe"]
+[ext_resource type="Script" uid="uid://cnw7msadrmof6" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_motion_blur.gd" id="10_mms66"]
+[ext_resource type="Resource" uid="uid://dipvwksvqb3dm" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_x_stage.tres" id="11_eik67"]
+[ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="12_wlivr"]
+[ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="13_4skmi"]
+[ext_resource type="Script" uid="uid://hj403b24ing2" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="14_bks33"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vb74y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8hp3f"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_k5fnn"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("6_b8n8j")
+pre_blur_processor_stage = ExtResource("5_0muwv")
+camera_rotation_component = ExtResource("3_mms66")
+camera_movement_component = ExtResource("2_ksmpk")
+object_movement_component = ExtResource("4_wr2qm")
+debug = false
+metadata/_custom_type_script = "uid://lijd0533ls0w"
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_wr2qm"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("10_mms66")
+blur_stage = ExtResource("7_ksmpk")
+overlay_stage = ExtResource("9_431pe")
+tile_max_x_stage = ExtResource("11_eik67")
+tile_max_y_stage = ExtResource("12_wlivr")
+neighbor_max_stage = ExtResource("8_k5fnn")
+tile_variance_stage = ExtResource("13_4skmi")
+tile_size = 40
+linear_falloff_slope = 1.0
+importance_bias = 40.0
+maximum_jitter_value = 0.95
+minimum_user_threshold = 1.5
+debug = false
+metadata/_custom_type_script = "uid://cnw7msadrmof6"
+
+[sub_resource type="Compositor" id="Compositor_i5sjk"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_k5fnn"), SubResource("CompositorEffect_wr2qm")])
+script = ExtResource("14_bks33")
+samples = 16
+intensity = 1.0
+center_fade = 0.0
+framerate_independent = true
+uncapped_independence = false
+target_constant_framerate = 30.0
+metadata/_custom_type_script = "uid://hj403b24ing2"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_giai7"]
+shader = ExtResource("1_8hp3f")
+shader_parameter/aspect = 0.5
+shader_parameter/distortion = 0.885
+shader_parameter/radius = 1.07
+shader_parameter/alpha = 1.0
+shader_parameter/crop = 0.943
+shader_parameter/crop_color = Color(0, 0, 0, 1)
+shader_parameter/crop_feathering = 0.1
+shader_parameter/channel_offset = -0.027
+shader_parameter/noise_strength = 25.21
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Camera", "Camera_Controller")]
+script = ExtResource("1_giai7")
+Camera = NodePath("Head/CameraController/Camera3D")
+Camera_Controller = NodePath("Head/CameraController")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_vb74y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8hp3f")
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="CameraController" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head/CameraController"]
+compositor = SubResource("Compositor_i5sjk")
+fov = 120.0
+
+[node name="BodycamEffectLayer" type="CanvasLayer" parent="Head/CameraController/Camera3D"]
+
+[node name="BodycamEffect" type="ColorRect" parent="Head/CameraController/Camera3D/BodycamEffectLayer"]
+material = SubResource("ShaderMaterial_giai7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
